@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Team Leadership Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Component Team Leadership Tracker</h1>
+                <div class="current-week">
+                    <span class="week-indicator">Week <span id="current-week-num">1</span></span>
+                    <button class="btn btn--secondary btn--sm" id="export-btn">Export Report</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="progress-summary">
+                    <h3>Overall Progress</h3>
+                    <div class="overall-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="overall-progress"></div>
+                        </div>
+                        <span id="overall-percentage">0%</span>
+                    </div>
+                </div>
+
+                <nav class="week-nav">
+                    <h3>Weeks Overview</h3>
+                    <div class="weeks-list" id="weeks-list">
+                        <!-- Week navigation items will be populated by JavaScript -->
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="week-header">
+                    <div class="week-title">
+                        <h2 id="week-title">Week 1</h2>
+                        <span class="phase-badge" id="phase-badge">Foundation & Assessment</span>
+                    </div>
+                    <div class="week-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="week-progress"></div>
+                        </div>
+                        <span id="week-percentage">0%</span>
+                    </div>
+                </div>
+
+                <div class="week-content">
+                    <!-- Objectives Section -->
+                    <section class="card objectives-section">
+                        <h3>Main Objectives</h3>
+                        <div class="objectives-list" id="objectives-list">
+                            <!-- Objectives will be populated by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Key Activities Section -->
+                    <section class="card expandable-section">
+                        <div class="section-header" onclick="toggleSection('activities')">
+                            <h3>Key Activities</h3>
+                            <span class="expand-icon" id="activities-icon">▼</span>
+                        </div>
+                        <div class="section-content collapsed" id="activities-content">
+                            <div class="activities-list" id="activities-list">
+                                <!-- Activities will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Deliverables Section -->
+                    <section class="card expandable-section">
+                        <div class="section-header" onclick="toggleSection('deliverables')">
+                            <h3>Deliverables</h3>
+                            <span class="expand-icon" id="deliverables-icon">▼</span>
+                        </div>
+                        <div class="section-content collapsed" id="deliverables-content">
+                            <div class="deliverables-list" id="deliverables-list">
+                                <!-- Deliverables will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Success Metrics Section -->
+                    <section class="card expandable-section">
+                        <div class="section-header" onclick="toggleSection('metrics')">
+                            <h3>Success Metrics</h3>
+                            <span class="expand-icon" id="metrics-icon">▼</span>
+                        </div>
+                        <div class="section-content collapsed" id="metrics-content">
+                            <div class="metrics-list" id="metrics-list">
+                                <!-- Metrics will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Notes Section -->
+                    <section class="card notes-section">
+                        <h3>Personal Notes</h3>
+                        <textarea 
+                            class="form-control notes-textarea" 
+                            id="week-notes" 
+                            placeholder="Add your observations and notes for this week..."
+                            rows="4"
+                        ></textarea>
+                        <button class="btn btn--secondary btn--sm" id="save-notes-btn">Save Notes</button>
+                    </section>
+
+                    <!-- Navigation -->
+                    <div class="week-navigation">
+                        <button class="btn btn--outline" id="prev-week-btn">← Previous Week</button>
+                        <button class="btn btn--outline" id="next-week-btn">Next Week →</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Export Modal -->
+        <div class="modal hidden" id="export-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Progress Report</h3>
+                    <button class="btn btn--secondary btn--sm" onclick="closeModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div id="export-content">
+                        <!-- Export content will be generated by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn--primary" onclick="copyReport()">Copy Report</button>
+                    <button class="btn btn--secondary" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
